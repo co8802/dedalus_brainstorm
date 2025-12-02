@@ -1,18 +1,20 @@
-# src/main.py
 import asyncio
+from .tools.brainstorm import TOOL_DEFS, handle_call
+
 
 from mcp.server import Server
 from mcp.types import (
-    CallToolRequest,          # <-- no *Schema
-    ListToolsRequest,         # <-- no *Schema
-    InitializedNotification,  # <-- no *Schema
+    InitializedNotificationParams,
+    ListToolsRequestParams,
+    CallToolRequestParams,
 )
 
-# HTTP transport that exists in your installed openmcp
+# correct HTTP transport class in your installed openmcp
 from openmcp.server.transports.streamable_http import StreamableHTTPTransport
 
-# your tools
+# ✅ relative import because `main.py` lives inside the `src` package
 from .tools.brainstorm import TOOL_DEFS, handle_call
+
 
 
 
