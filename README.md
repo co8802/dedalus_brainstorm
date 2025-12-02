@@ -20,3 +20,10 @@ Behind the scenes, a `Memory` class stores ideas in a dictionary, grouped by top
 ```bash
 source .venv/bin/activate
 uvicorn src.app:app --reload --port 8001
+
+##Test with curl
+curl http://127.0.0.1:8001/tools
+curl -X POST http://127.0.0.1:8001/call -H "Content-Type: application/json" \
+  -d '{"name":"brainstorm.add","arguments":{"topic":"sports","idea":"xG heatmaps"}}'
+curl -X POST http://127.0.0.1:8001/call -H "Content-Type: application/json" \
+  -d '{"name":"brainstorm.list","arguments":{"topic":"sports"}}'
